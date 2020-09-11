@@ -1,9 +1,7 @@
 package com.mooner.producer;
 
-import org.apache.kafka.clients.producer.Callback;
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.Producer;
-import org.apache.kafka.clients.producer.ProducerRecord;
+import com.mooner.partition.MyPartition;
+import org.apache.kafka.clients.producer.*;
 
 import java.util.Properties;
 
@@ -33,12 +31,11 @@ public class MyProducer {
         props.put("buffer.memory", 33554432);
         props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        props.put(ProducerConfig.PARTITIONER_CLASS_CONFIG, MyPartition.class);
         Producer<String, String> producer = new KafkaProducer<>(props);
         for (int i = 0; i < 10; i++) {
-            producer.send(new ProducerRecord<String, String>("first", "test-" + i),
-                    (m, e) -> {
-                        System.out.println(m.offset()+"-"+m.partition());
-                    });
+            producer.send(new ProducerRecord<String, String>("third", "test-" + i),
+                    (m, e) -> System.out.println(m.offset() + "-" + m.partition()));
         }
         producer.close();
     }
