@@ -14,7 +14,7 @@ import java.util.Map;
 public class MyPartition implements Partitioner {
     @Override
     public int partition(String s, Object o, byte[] bytes, Object o1, byte[] bytes1, Cluster cluster) {
-        return 1;
+        return 0;
     }
 
     @Override
