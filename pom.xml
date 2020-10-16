@@ -10,13 +10,66 @@
 
 
     <modules>
-        <module>feign-demo01-provider</module>
-        <module>demo-consumer</module>
-        <module>rocket-mq</module>
-        <module>grpc-demo-user-service-api</module>
-        <module>grpc-demo-user-server</module>
-        <module>grpc-demo-user-client</module>
-        <module>kafka-demo</module>
+<!--        <module>feign-demo01-provider</module>-->
+<!--        <module>demo-consumer</module>-->
+<!--        <module>rocket-mq</module>-->
+<!--        <module>grpc-demo-user-service-api</module>-->
+<!--        <module>grpc-demo-user-server</module>-->
+<!--        <module>grpc-demo-user-client</module>-->
+<!--        <module>kafka-demo</module>-->
+        <module>example-test</module>
+        <module>Netty-test</module>
     </modules>
 
+    <profiles>
+        <profile>
+            <id>apple</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <fruit>APPLE</fruit>
+            </properties>
+        </profile>
+        <profile>
+            <id>banana</id>
+            <properties>
+                <fruit>BANANA</fruit>
+            </properties>
+        </profile>
+        <profile>
+            <id>production</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <configuration>
+                            <debug>false</debug>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <echo>Fruit:${fruit}</echo>
+                            </tasks>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

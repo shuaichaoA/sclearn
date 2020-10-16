@@ -26,6 +26,7 @@ public class ConsumerInOrder {
        consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
 
        consumer.subscribe("TopicTest", "TagA || TagC || TagD");
+       consumer.setConsumeMessageBatchMaxSize(3);
 
        consumer.registerMessageListener(new MessageListenerOrderly() {
 
