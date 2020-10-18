@@ -15,7 +15,7 @@ public class Channel01 {
         allocate.put(bytes);
         allocate.flip();
 
-        FileOutputStream fileInputStream = new FileOutputStream("E:\\file.txt");
+        FileOutputStream fileInputStream = new FileOutputStream("01.txt");
         FileChannel channel = fileInputStream.getChannel();
         int write = channel.write(allocate);
 
