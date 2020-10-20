@@ -28,7 +28,7 @@ public class Producer {
          * }
          * </pre>
          */
-        producer.setNamesrvAddr("123.57.204.249:9876");
+        producer.setNamesrvAddr("127.0.0.1:9876");
         producer.setVipChannelEnabled(false);
         /*
          * Launch the instance.
@@ -41,7 +41,7 @@ public class Producer {
                 /*
                  * Create a message instance, specifying topic, tag and message body.
                  */
-                Message msg = new Message("TopicTest" /* Topic */,
+                Message msg = new Message("ZhongChuang-cn-gt-d" /* Topic */,
                     "TagA" /* Tag */,
                     ("Hello RocketMQ " + i).getBytes(RemotingHelper.DEFAULT_CHARSET) /* Message body */
                 );
@@ -61,6 +61,6 @@ public class Producer {
         /*
          * Shut down once the producer instance is not longer in use.
          */
-        producer.shutdown();
+//        producer.shutdown();
     }
 }

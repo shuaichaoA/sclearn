@@ -1,4 +1,4 @@
-package bio.server;
+package man.bio.server;
 
 import java.io.IOException;
 import java.io.InputStream;

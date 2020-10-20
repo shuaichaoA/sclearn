@@ -1,6 +1,5 @@
-package nio.selector.client;
+package man.nio.selector.client;
 
-import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
