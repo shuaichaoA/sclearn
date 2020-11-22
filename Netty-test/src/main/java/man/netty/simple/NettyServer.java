@@ -28,7 +28,17 @@ public class NettyServer {
                 });
         System.out.println(".....服务器 is ready......");
         ChannelFuture cf = bootstrap.bind(6668).sync();
-        cf.channel().closeFuture().sync();
+        cf.addListener(future -> {
+            if (future.isSuccess()) {
+                System.out.println("绑定成功");
+            } else {
+                System.out.println("绑定失败");
+
+            }
+        });
+        cf.channel().closeFuture().
+
+                sync();
 
     }
 }
