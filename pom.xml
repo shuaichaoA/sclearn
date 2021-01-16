@@ -19,6 +19,8 @@
 <!--        <module>kafka-demo</module>-->
         <module>example-test</module>
         <module>Netty-test</module>
+        <module>mongodb-test</module>
+        <module>oom-test</module>
     </modules>
 
     <profiles>

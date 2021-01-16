@@ -1,5 +1,7 @@
 package com.mooner.all;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
@@ -11,21 +13,24 @@ import java.util.concurrent.FutureTask;
  * @date: $ $
  */
 public class TestCallable {
-    public static void main(String[] args) {
-        ThreadDemo td = new ThreadDemo();
-        FutureTask<Integer> futureTask = new FutureTask(td);
-
-        new Thread(futureTask).start();
-        Integer integer = null;
-        try {
-            integer = futureTask.get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
+    public static void main(String[] args) throws InterruptedException {
+        Map<String,Tom> map = new HashMap<String,Tom>();
+        int counter = 1;
+        while(true) {
+            Thread.sleep(10);
+            Tom tom = new Tom();
+            String [] friends = new String[counter];
+            for (int i = 0; i < friends.length; i++) {
+                friends[i] = "friends"+i;
+            }
+            tom.setAge(counter);
+            tom.setName("tom"+counter);
+            tom.setFriends(friends);
+            map.put(tom.getName(),tom);
+            if(counter%100==0)
+                System.out.println("put"+counter);
+            counter++;
         }
-        System.out.println(integer);
-
     }
 
 }

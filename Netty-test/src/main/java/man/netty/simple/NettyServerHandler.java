@@ -14,17 +14,20 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         System.out.println("server ctx = " + ctx);
-        ByteBuf buf = (ByteBuf) msg;
-        System.out.println("客户端消息" + buf.toString(UTF_8));
-        System.out.println("客户端地址:" + ctx.channel().remoteAddress());
-        ctx.channel().eventLoop().schedule(() -> {
-            try {
-                Thread.sleep(10 * 1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            ctx.writeAndFlush(Unpooled.copiedBuffer("hello,客户端-2", UTF_8));
-        },5, TimeUnit.SECONDS);
+        StudentPOJO.Student student = (StudentPOJO.Student) msg;
+        System.out.println("id:-- " + student.getId());
+        System.out.println("name:-- " + student.getName());
+//        ByteBuf buf = (ByteBuf) msg;
+//        System.out.println("客户端消息" + buf.toString(UTF_8));
+//        System.out.println("客户端地址:" + ctx.channel().remoteAddress());
+//        ctx.channel().eventLoop().schedule(() -> {
+//            try {
+//                Thread.sleep(10 * 1000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//            ctx.writeAndFlush(Unpooled.copiedBuffer("hello,客户端-2", UTF_8));
+//        },5, TimeUnit.SECONDS);
         System.out.println("...GO ON...");
     }
 

@@ -11,8 +11,13 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("client" + ctx);
-        ctx.writeAndFlush(Unpooled.copiedBuffer("hello,server,m喵喵喵", UTF_8));
+        System.out.println("client: " + ctx);
+
+        StudentPOJO.Student student = StudentPOJO.Student.newBuilder().setId(1).setName("帅超").build();
+
+
+//        ctx.writeAndFlush(Unpooled.copiedBuffer("hello,server,m喵喵喵", UTF_8));
+        ctx.writeAndFlush(student);
     }
 
     @Override
